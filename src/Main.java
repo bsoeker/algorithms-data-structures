@@ -1,35 +1,43 @@
+import java.util.Arrays;
+
 public class Main {
 
 	public static void main(String[] args) {
 		CustomArray arr = new CustomArray(5);
-		arr.insert(1);
-		arr.insert(2);
-		arr.insert(3);
-		arr.insert(4);
-		arr.insert(5);
-		arr.removeAt(0);
-		System.out.println(arr);
-		System.out.println(arr.indexOf(1));
-
-		arr.insert(6);
-		System.out.println(arr);
-		System.out.println(arr.indexOf(2));
-		arr.removeAt(4);
-		System.out.println(arr);
-
-		arr.removeAt(3);
-		System.out.println(arr.indexOf(3));
-		arr.removeAt(2);
-		arr.removeAt(1);
-		arr.removeAt(0);
-		System.out.println(arr);
-		System.out.println(arr.size());
-
-		for (int i = 0; i < 21; i++) {
-			arr.insert(i);
+		try {
+			System.out.println(arr.maxValue());
+		} catch (Exception e) {
+			System.out.println("Oops! Deliberate error for probing");
 		}
+		arr.insert(10);
+		arr.insert(20);
+		arr.insert(30);
+		arr.insert(40);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.insert(50);
+		arr.removeAt(4);
+		arr.removeAt(0);
+
+		// System.out.println(arr.indexOf(20));
+		// System.out.println(arr);
+		// System.out.println(arr.maxValue());
+		//
+		// int[] otherArr = new int[10];
+		// for (int i = 0; i < otherArr.length; i++) {
+		// otherArr[i] = i * 10;
+		// }
+		//
+		// System.out.println(Arrays.toString(arr.intersection(otherArr)));
+		arr.reverse();
 		System.out.println(arr);
-		System.out.println(arr.size());
-		System.out.println(arr.indexOf(3));
 	}
 }
