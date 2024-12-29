@@ -1,4 +1,7 @@
-public class MyLinkedList<T> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class MyLinkedList<T> implements Iterable<T> {
 
     private class Node {
         T value;
@@ -12,6 +15,7 @@ public class MyLinkedList<T> {
 
     private Node first;
     private Node last;
+    private int size;
 
     private boolean isEmpty() {
         return first == null;
@@ -26,6 +30,8 @@ public class MyLinkedList<T> {
             last.next = node;
             last = node;
         }
+
+        size++;
     }
 
     public void addFirst(T value) {
@@ -38,6 +44,7 @@ public class MyLinkedList<T> {
             first = node;
         }
 
+        size++;
     }
 
     public int indexOf(T value) {
@@ -60,25 +67,23 @@ public class MyLinkedList<T> {
 
     public void removeFirst() {
         // [first -> second -> third]
-        if (isEmpty()) {
-            System.out.println("List is empty!");
-            return;
-        }
+        if (isEmpty())
+            throw new NoSuchElementException("List is empty!");
 
         Node second = first.next;
         first.next = null;
         first = second;
+        size--;
     }
 
     public void removeLast() {
-        // [first -> second -> third -> fourth]
-        if (isEmpty()) {
-            System.out.println("List is empty!");
-            return;
-        }
+        // [first -> second -> third -> last]
+        if (isEmpty())
+            throw new NoSuchElementException("List is empty!");
 
         if (first == last) {
             first = last = null;
+            size--;
             return;
         }
 
@@ -88,21 +93,11 @@ public class MyLinkedList<T> {
 
         current.next = null;
         last = current;
+        size--;
     }
 
     public int size() {
-        if (isEmpty())
-            return 0;
-
-        int counter = 0;
-        Node current = first;
-
-        while (current != null) {
-            current = current.next;
-            counter++;
-        }
-
-        return counter;
+        return size;
     }
 
     @Override
@@ -123,5 +118,27 @@ public class MyLinkedList<T> {
         stringBuffer.append("]");
 
         return stringBuffer.toString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node current = first;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext())
+                    throw new NoSuchElementException();
+
+                T value = current.value;
+                current = current.next;
+                return value;
+            }
+        };
     }
 }
