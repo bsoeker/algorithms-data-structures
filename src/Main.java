@@ -1,15 +1,24 @@
+import java.util.Stack;
+
 public class Main {
 
     public static void main(String[] args) {
-        MyLinkedList<Integer> intList = new MyLinkedList<>();
-        intList.addLast(10);
-        intList.addLast(20);
-        intList.addLast(30);
-        intList.addLast(40);
-        intList.addLast(50);
-        // intList.reverse();
-        System.out.println(intList.KthNodeFormTheEnd(5));
+        String str = "New York";
+        System.out.println(reverse(str));
+    }
 
-        System.out.println(intList);
+    public static String reverse(String str) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            stack.push(str.charAt(i));
+        }
+
+        StringBuffer resultBuffer = new StringBuffer();
+
+        while (!stack.isEmpty()) {
+            resultBuffer.append(stack.pop());
+        }
+
+        return resultBuffer.toString();
     }
 }
