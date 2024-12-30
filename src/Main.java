@@ -8,6 +8,9 @@ public class Main {
     }
 
     public static String reverse(String str) {
+        if (str == null)
+            throw new IllegalArgumentException();
+
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
             stack.push(str.charAt(i));
