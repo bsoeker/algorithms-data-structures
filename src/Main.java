@@ -1,25 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class Main {
 
     public static void main(String[] args) {
-        Stack<Integer> numbers = new Stack<>();
-        System.out.println(numbers);
-
+        Queue<Integer> queue = new ArrayDeque<>();
         for (int i = 0; i < 20; i++) {
-            numbers.push(i);
+            queue.add(i);
         }
 
-        System.out.println(numbers);
-
-        Stack<Integer> reversed = new Stack<>();
-        while (!numbers.isEmpty()) {
-            reversed.push(numbers.pop());
-        }
-        System.out.println(reversed);
-        System.out.println(numbers);
-        System.out.println(reversed.peek());
+        QueueReverser.reverse(queue);
+        System.out.println(queue);
     }
-
 }
