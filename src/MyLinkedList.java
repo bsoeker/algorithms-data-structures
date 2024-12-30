@@ -115,6 +115,28 @@ public class MyLinkedList<T> implements Iterable<T> {
         first = previous;
     }
 
+    public T KthNodeFormTheEnd(int k) {
+        if (k <= 0)
+            throw new IllegalArgumentException("k must be at least 1!");
+
+        Node headPointer = first;
+        Node tailPointer = first;
+
+        int distanceBetween = k - 1;
+
+        while (distanceBetween != 0) {
+            tailPointer = tailPointer.next;
+            distanceBetween--;
+        }
+
+        while (tailPointer.next != null) {
+            tailPointer = tailPointer.next;
+            headPointer = headPointer.next;
+        }
+
+        return headPointer.value;
+    }
+
     public int size() {
         return size;
     }
