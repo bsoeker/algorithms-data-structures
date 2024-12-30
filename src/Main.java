@@ -1,15 +1,17 @@
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class Main {
 
     public static void main(String[] args) {
-        Queue<Integer> queue = new ArrayDeque<>();
-        for (int i = 0; i < 20; i++) {
-            queue.add(i);
-        }
+        ArrayQueue queue = new ArrayQueue(5);
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.enqueue(40);
+        queue.enqueue(50);
+        queue.dequeue();
+        queue.enqueue(60);
+        queue.dequeue();
+        queue.enqueue(70);
 
-        QueueReverser.reverse(queue);
         System.out.println(queue);
     }
 }
