@@ -96,28 +96,27 @@ public class MyLinkedList<T> implements Iterable<T> {
         size--;
     }
 
-    public int size() {
-        return size;
-    }
+    public void reverse() {
+        // [10 -> 20 -> 30 -> 40]
+        // p -> c -> n
 
-    @Override
-    public String toString() {
-        if (isEmpty())
-            return "[ ]";
+        Node previous = first;
+        Node current = first.next;
 
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("[ ");
-
-        Node current = first;
         while (current != null) {
-            stringBuffer.append(current.value + ", ");
-            current = current.next;
+            Node next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
         }
 
-        stringBuffer.deleteCharAt(stringBuffer.length() - 1 - 1);
-        stringBuffer.append("]");
+        last = first;
+        last.next = null;
+        first = previous;
+    }
 
-        return stringBuffer.toString();
+    public int size() {
+        return size;
     }
 
     @Override
@@ -140,5 +139,25 @@ public class MyLinkedList<T> implements Iterable<T> {
                 return value;
             }
         };
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty())
+            return "[ ]";
+
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("[ ");
+
+        Node current = first;
+        while (current != null) {
+            stringBuffer.append(current.value + ", ");
+            current = current.next;
+        }
+
+        stringBuffer.deleteCharAt(stringBuffer.length() - 1 - 1);
+        stringBuffer.append("]");
+
+        return stringBuffer.toString();
     }
 }
