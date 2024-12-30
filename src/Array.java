@@ -2,11 +2,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyArray {
+public class Array {
     private int pointer;
     private int[] arr;
 
-    public MyArray(int initialSize) {
+    public Array(int initialSize) {
         this.arr = new int[initialSize];
     }
 
