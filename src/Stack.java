@@ -42,6 +42,15 @@ public class Stack<T> {
         return pointer == 0;
     }
 
+    public Stack<T> createCopy() {
+        Stack<T> copy = new Stack<>();
+        for (int i = 0; i < pointer; i++) {
+            copy.push(arr[i]);
+        }
+
+        return copy;
+    }
+
     public T peek() {
         if (isEmpty())
             throw new IllegalStateException("Stack is empty!");
