@@ -26,6 +26,7 @@ public class ArrayQueue {
         // reaches the length of the arr we can make use of the slots of the dequeued
         // values by using circular arrays via the modulus operator!
         rear++;
+        count++;
     }
 
     public int dequeue() {
@@ -34,6 +35,7 @@ public class ArrayQueue {
 
         int item = arr[front % arr.length];
         front++;
+        count--;
         return item;
     }
 

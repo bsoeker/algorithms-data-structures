@@ -11,7 +11,14 @@ public class Main {
         queue.enqueue(60);
         queue.dequeue();
         queue.enqueue(70);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
 
         System.out.println(queue);
+        System.out.println(queue.isFull());
+        System.out.println(queue.isEmpty());
     }
 }
