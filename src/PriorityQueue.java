@@ -37,10 +37,11 @@ public class PriorityQueue {
 
         int i;
         for (i = rear; i > front; i--) {
-            if (value < arr[i - 1]) {
+            if (value < arr[i - 1])
                 arr[i] = arr[i - 1];
-                continue;
-            }
+            else
+                break;
+
         }
 
         arr[i] = value;
