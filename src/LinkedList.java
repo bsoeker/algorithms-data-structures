@@ -114,6 +114,10 @@ public class LinkedList<T> implements Iterable<T> {
         first = previous;
     }
 
+    public T getLast() {
+        return last.value;
+    }
+
     public T KthNodeFormTheEnd(int k) {
         if (k <= 0)
             throw new IllegalArgumentException("k must be at least 1!");

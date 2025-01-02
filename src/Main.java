@@ -1,12 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main {
 
     public static void main(String[] args) {
-        CharFinder finder = new CharFinder();
-        var result = finder.findFirstRepeatedChar("ndndfjgn");
+        HashTable table = new HashTable();
 
-        System.out.println(result);
+        table.add(1, "New York");
+        table.add(1, "Tokyo");
+        table.add(-1, "Istanbul");
+        table.add(30, "New York");
+        System.out.println(table.get(-1));
+        System.out.println(table.get(1));
+        System.out.println(table.get(30));
     }
 }
