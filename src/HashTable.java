@@ -1,12 +1,9 @@
-// for now i won't implement a generic class due to the complications in
-// implementing a general hash function.
-
-public class HashTable {
+public class HashTable<K, V> {
     private class Entry {
-        private int key;
-        private String value;
+        private K key;
+        private V value;
 
-        public Entry(int key, String value) {
+        public Entry(K key, V value) {
             this.key = key;
             this.value = value;
         }
@@ -15,11 +12,11 @@ public class HashTable {
     private LinkedList<Entry>[] arr;
 
     private boolean isBucketEmpty(int index) {
-        return arr[getIndex(index)] == null;
+        return arr[index] == null;
     }
 
-    private int getIndex(int key) {
-        return Math.abs(key) % arr.length;
+    private int getIndex(K key) {
+        return Math.abs(key.hashCode()) % arr.length;
     }
 
     @SuppressWarnings("unchecked")
@@ -27,7 +24,7 @@ public class HashTable {
         this.arr = (LinkedList<Entry>[]) new LinkedList[29];
     }
 
-    public void add(int key, String value) {
+    public void add(K key, V value) {
         int index = getIndex(key);
         if (isBucketEmpty(index)) {
             arr[index] = new LinkedList<>();
@@ -44,7 +41,7 @@ public class HashTable {
         arr[index].addLast(new Entry(key, value));
     }
 
-    public String get(int key) {
+    public V get(K key) {
         int index = getIndex(key);
         if (isBucketEmpty(index)) {
             return null;
