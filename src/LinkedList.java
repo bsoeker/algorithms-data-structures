@@ -75,6 +75,37 @@ public class LinkedList<T> implements Iterable<T> {
         size--;
     }
 
+    public void removeByValue(T value) {
+        if (isEmpty())
+            throw new NoSuchElementException("List is empty!");
+
+        if (first.value == value) {
+            removeFirst();
+            return;
+        }
+
+        if (first.next == null)
+            throw new NoSuchElementException("List is empty!");
+
+        Node previous = first;
+        Node current = first.next;
+        while (current.next != null) {
+            if (current.value != value) {
+                previous = current;
+                current = current.next;
+            } else
+                break;
+        }
+        // [10 -> 20 -> 30 -> 40]
+        // p c
+
+        if (current.value != value)
+            throw new NoSuchElementException();
+
+        previous.next = current.next;
+        current = null;
+    }
+
     public void removeLast() {
         // [first -> second -> third -> last]
         if (isEmpty())
