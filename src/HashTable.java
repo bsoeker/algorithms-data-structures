@@ -11,13 +11,15 @@ public class HashTable<K, V> {
         }
     }
 
+    private static final int[] PRIMES = { 101, 211, 431, 863, 1741, 3499, 7013, 14033 };
+    private int primeIndex = 0;
     private LinkedList<Entry>[] arr;
     private int size;
     private final double loadFactorThreshold;
 
     @SuppressWarnings("unchecked")
     public HashTable() {
-        this.arr = (LinkedList<Entry>[]) new LinkedList[29];
+        this.arr = (LinkedList<Entry>[]) new LinkedList[PRIMES[primeIndex++]];
         this.size = 0;
         this.loadFactorThreshold = 0.75;
     }
@@ -35,8 +37,13 @@ public class HashTable<K, V> {
     }
 
     private void increaseSize() {
+        if (primeIndex == PRIMES.length) {
+            System.out.println("Already at the biggest available prime size!");
+            return;
+        }
+
         @SuppressWarnings("unchecked")
-        LinkedList<Entry>[] newArr = new LinkedList[arr.length * 2];
+        LinkedList<Entry>[] newArr = new LinkedList[PRIMES[primeIndex++]];
 
         // Rehashing the existing elements in the new hashTable
         for (LinkedList<Entry> bucket : arr) {
