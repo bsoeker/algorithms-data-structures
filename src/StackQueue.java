@@ -36,23 +36,6 @@ public class StackQueue<T> {
 
         StringJoiner joiner = new StringJoiner(", ", "[ ", " ]");
 
-        if (dequeueCopy.isEmpty()) {
-            while (!enqueueCopy.isEmpty())
-                dequeueCopy.push(enqueueCopy.pop());
-
-            while (!dequeueCopy.isEmpty())
-                joiner.add(String.valueOf(dequeueCopy.pop()));
-
-            return joiner.toString();
-        }
-
-        if (enqueueCopy.isEmpty()) {
-            while (!dequeueCopy.isEmpty())
-                joiner.add(String.valueOf(dequeueCopy.pop()));
-
-            return joiner.toString();
-        }
-
         while (!dequeueCopy.isEmpty())
             joiner.add(String.valueOf(dequeueCopy.pop()));
         while (!enqueueCopy.isEmpty())
