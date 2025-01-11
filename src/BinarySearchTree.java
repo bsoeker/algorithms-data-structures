@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class BinarySearchTree {
     private class Node {
         private int value;
@@ -62,6 +64,55 @@ public class BinarySearchTree {
         }
 
         return false;
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node node) {
+        if (node == null)
+            return -1;
+
+        if (node.leftChild == null && node.rightChild == null)
+            return 0;
+
+        return 1 + Math.max(height(node.leftChild), height(node.rightChild));
+    }
+
+    public int minValue() {
+        if (root == null)
+            throw new NoSuchElementException("Tree is empty!");
+
+        return minValue(root);
+    }
+
+    // If the tree is a BST, the cost of this algorithm is the lowest.
+    private int minValueIterative() {
+        Node current = root;
+        while (current.leftChild != null)
+            current = current.leftChild;
+
+        return current.value;
+    }
+
+    private int minValueRecursive(Node node) {
+        if (node == null)
+            return Integer.MAX_VALUE;
+
+        return Math.min(node.value, minValueRecursive(node.leftChild));
+    }
+
+    // This implementation will work with any kind of binary tree
+    // O(n)
+    private int minValue(Node node) {
+        if (node == null)
+            return Integer.MAX_VALUE;
+
+        int left = minValue(node.leftChild);
+        int right = minValue(node.rightChild);
+
+        return Math.min(Math.min(left, right), node.value);
     }
 
     public void preOrderTraverse() {
