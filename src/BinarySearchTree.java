@@ -169,6 +169,12 @@ public class BinarySearchTree {
         printNodesAtKDistance(K - 1, node.rightChild);
     }
 
+    public void breadthFirstTraverse() {
+        for (int i = 0; i <= height(); i++) {
+            printNodesAtKDistance(i);
+        }
+    }
+
     private boolean isBinarySearchTree(Node node, int min, int max) {
         if (node == null)
             return true;

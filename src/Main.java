@@ -9,9 +9,7 @@ public class Main {
         tree.insert(10);
         tree.insert(2);
         tree.insert(6);
-        tree.insert(1);
-        tree.insert(-1);
 
-        tree.printNodesAtKDistance(4);
+        tree.breadthFirstTraverse();
     }
 }
