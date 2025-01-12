@@ -150,6 +150,25 @@ public class BinarySearchTree {
         root.rightChild = temp;
     }
 
+    public void printNodesAtKDistance(int K) {
+        printNodesAtKDistance(K, root);
+        return;
+    }
+
+    private void printNodesAtKDistance(int K, Node node) {
+        if (node == null || K < 0) {
+            return;
+        }
+
+        if (K == 0) {
+            System.out.println(node.value);
+            return;
+        }
+
+        printNodesAtKDistance(K - 1, node.leftChild);
+        printNodesAtKDistance(K - 1, node.rightChild);
+    }
+
     private boolean isBinarySearchTree(Node node, int min, int max) {
         if (node == null)
             return true;

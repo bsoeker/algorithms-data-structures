@@ -12,9 +12,6 @@ public class Main {
         tree.insert(1);
         tree.insert(-1);
 
-        System.out.println(tree.isBinarySearchTree());
-
-        tree.swapChildrenRoot();
-        System.out.println(tree.isBinarySearchTree());
+        tree.printNodesAtKDistance(4);
     }
 }
