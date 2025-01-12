@@ -12,17 +12,9 @@ public class Main {
         tree.insert(1);
         tree.insert(-1);
 
-        BinarySearchTree secondTree = new BinarySearchTree();
-        secondTree.insert(7);
-        secondTree.insert(9);
-        secondTree.insert(8);
-        secondTree.insert(5);
-        secondTree.insert(10);
-        secondTree.insert(2);
-        secondTree.insert(6);
-        secondTree.insert(1);
-        secondTree.insert(-1);
+        System.out.println(tree.isBinarySearchTree());
 
-        System.out.println(tree.equals(secondTree));
+        tree.swapChildrenRoot();
+        System.out.println(tree.isBinarySearchTree());
     }
 }

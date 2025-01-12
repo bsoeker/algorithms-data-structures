@@ -143,6 +143,13 @@ public class BinarySearchTree {
         return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
+    // Helper method to test the isBinarySearchTree()
+    public void swapChildrenRoot() {
+        var temp = root.leftChild;
+        root.leftChild = root.rightChild;
+        root.rightChild = temp;
+    }
+
     private boolean isBinarySearchTree(Node node, int min, int max) {
         if (node == null)
             return true;
