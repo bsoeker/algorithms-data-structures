@@ -143,6 +143,17 @@ public class BinarySearchTree {
         return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
+    private boolean isBinarySearchTree(Node node, int min, int max) {
+        if (node == null)
+            return true;
+
+        if (node.value < min || node.value > max)
+            return false;
+
+        return isBinarySearchTree(node.leftChild, min, node.value - 1)
+                && isBinarySearchTree(node.rightChild, node.value + 1, max);
+    }
+
     // Helper method to test the isBinarySearchTree()
     public void swapChildrenRoot() {
         var temp = root.leftChild;
@@ -173,17 +184,6 @@ public class BinarySearchTree {
         for (int i = 0; i <= height(); i++) {
             printNodesAtKDistance(i);
         }
-    }
-
-    private boolean isBinarySearchTree(Node node, int min, int max) {
-        if (node == null)
-            return true;
-
-        if (node.value < min || node.value > max)
-            return false;
-
-        return isBinarySearchTree(node.leftChild, min, node.value - 1)
-                && isBinarySearchTree(node.rightChild, node.value + 1, max);
     }
 
     public void preOrderTraverse() {
