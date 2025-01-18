@@ -5,12 +5,16 @@ public class Main {
         tree.insert(10);
         tree.insert(30);
         tree.insert(20);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(50);
 
-        AVLTree tree2 = new AVLTree();
-        tree2.insert(30);
-        tree2.insert(20);
-        tree2.insert(10);
-
+        // ----------10 ------------ 20 ------------------ 20
+        // ------------30 ---------10 - 30 -------------10 -- 40
+        // ----------20 ----------------- 40 ---------------30 - 50
+        // -------------------------------- 50
+        tree.preOrderTraverse();
         System.out.println();
+        tree.postOrderTraverse();
     }
 }
