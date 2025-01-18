@@ -6,6 +6,11 @@ public class Main {
         tree.insert(30);
         tree.insert(20);
 
+        AVLTree tree2 = new AVLTree();
+        tree2.insert(30);
+        tree2.insert(20);
+        tree2.insert(10);
+
         System.out.println();
     }
 }

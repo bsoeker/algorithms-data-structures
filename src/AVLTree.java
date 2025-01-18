@@ -37,10 +37,40 @@ public class AVLTree {
                 height(node.leftChild),
                 height(node.rightChild)) + 1;
 
+        if (isLeftHeavy(node)) {
+            if (getBalanceFactor(node.leftChild) == 1)
+                System.out.println("Needs a right rotation!");
+            if (getBalanceFactor(node.rightChild) == -1)
+                System.out.println("Needs a right-left rotation!");
+        }
+        if (isRightHeavy(node)) {
+            if (getBalanceFactor(node.rightChild) == 1)
+                // 10
+                // -- 20
+                // 15
+                System.out.println("Needs a right-left rotation!");
+            if (getBalanceFactor(node.rightChild) == -1)
+                // 10
+                // -- 20
+                // ---- 30
+                System.out.println("Needs a left rotation!");
+        }
         return node; // Return the unchanged or updated node
     }
 
     private int height(Node node) {
         return node == null ? -1 : node.height;
+    }
+
+    private int getBalanceFactor(Node node) {
+        return node == null ? 0 : height(node.leftChild) - height(node.rightChild);
+    }
+
+    private boolean isLeftHeavy(Node node) {
+        return getBalanceFactor(node) > 1;
+    }
+
+    private boolean isRightHeavy(Node node) {
+        return getBalanceFactor(node) < -1;
     }
 }
