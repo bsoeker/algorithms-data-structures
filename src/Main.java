@@ -1,20 +1,21 @@
 public class Main {
 
     public static void main(String[] args) {
-        AVLTree tree = new AVLTree();
-        tree.insert(10);
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(20);
-        tree.insert(40);
-        tree.insert(50);
+        Heap heap = new Heap();
+        heap.insert(15);
+        heap.insert(10);
+        heap.insert(3);
+        heap.insert(8);
+        heap.insert(12);
+        heap.insert(9);
+        heap.insert(4);
+        heap.insert(1);
+        heap.insert(24);
+        heap.remove();
+        heap.remove();
+        heap.remove();
 
-        // ----------10 ------------ 20 ------------------ 20
-        // ------------30 ---------10 - 30 -------------10 -- 40
-        // ----------20 ----------------- 40 ---------------30 - 50
-        // -------------------------------- 50
-        tree.preOrderTraverse();
-        System.out.println();
-        tree.postOrderTraverse();
+        System.out.println(heap);
+
     }
 }
